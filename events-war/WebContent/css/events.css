@@ -1,0 +1,14 @@
+@CHARSET "UTF-8";
+
+
+body     { font-family: Arial; }
+.tablebg { background-color: #D0D0A0; }
+.tablehdr  { font-weight: bold; }
+.text    { text-align: left; }
+.number  { text-align: right; }
+.oddrow  { background-color: #DDDDDD; }
+.evenrow { background-color: #FFFFFF; }
+
+.alignright { text-align: right; }
+.labelcol { font-weight: bold; }
+.valuecol { background-color: #FFFFFF; }

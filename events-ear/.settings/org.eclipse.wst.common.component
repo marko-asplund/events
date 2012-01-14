@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-modules id="moduleCoreId" project-version="1.5.0">
+    <wb-module deploy-name="events-ear">
+        <wb-resource deploy-path="/" source-path="/EarContent"/>
+        <dependent-module deploy-path="/" handle="module:/resource/events-ejb/events-ejb">
+            <dependent-object>EjbModule_1206185684606</dependent-object>
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module deploy-path="/" handle="module:/resource/events-war/events-war">
+            <dependent-object>WebModule_1206186023018</dependent-object>
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="events-service.jar" deploy-path="/" handle="module:/resource/events-service/events-service">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module deploy-path="/" handle="module:/classpath/lib/events-service/lib/log4j-1.2.15.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module deploy-path="/" handle="module:/classpath/lib/events-service/lib/spring.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module deploy-path="/" handle="module:/classpath/lib/events-service/lib/aspectjweaver.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module deploy-path="/" handle="module:/classpath/lib/events-service/lib/serp-1.13.1.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module deploy-path="/" handle="module:/classpath/lib/events-service/lib/commons-lang-2.1.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module deploy-path="/" handle="module:/classpath/lib/events-service/lib/commons-collections-3.2.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module deploy-path="/" handle="module:/classpath/lib/events-service/lib/openjpa-1.0.2.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module deploy-path="/" handle="module:/classpath/lib/events-service/lib/geronimo-jpa_3.0_spec-1.0.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module deploy-path="/" handle="module:/classpath/lib/events-ear/lib/jcl104-over-slf4j-1.5.0.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module deploy-path="/" handle="module:/classpath/lib/events-ear/lib/slf4j-api-1.5.0.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module deploy-path="/" handle="module:/classpath/lib/events-ear/lib/slf4j-log4j12-1.5.0.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+    </wb-module>
+</project-modules>

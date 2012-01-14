@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE faces-config PUBLIC
+    "-//Sun Microsystems, Inc.//DTD JavaServer Faces Config 1.1//EN"
+    "http://java.sun.com/dtd/web-facesconfig_1_1.dtd">
+
+<faces-config>
+
+        <application>
+        	<variable-resolver>
+        		org.springframework.web.jsf.DelegatingVariableResolver
+        	</variable-resolver>
+        </application>
+
+        <managed-bean>
+        	<managed-bean-name>eventBacking</managed-bean-name>
+        	<managed-bean-class>
+        		events.web.EventBacking
+        	</managed-bean-class>
+        	<managed-bean-scope>request</managed-bean-scope>
+        	<managed-property>
+        		<property-name>eventSession</property-name>
+        		<property-class>events.web.EventSession</property-class>
+        		<value>#{eventSession}</value>
+        	</managed-property>
+        	<managed-property>
+        		<property-name>eventService</property-name>
+        		<property-class>
+        			events.service.EventService
+        		</property-class>
+        		<value>#{eventService}</value>
+        	</managed-property>
+        	<managed-property>
+        		<property-name>eventServiceEjb</property-name>
+        		<property-class>
+        			events.service.EventService
+        		</property-class>
+        		<value>#{eventServiceEjb}</value>
+        	</managed-property>
+        </managed-bean>
+
+        <managed-bean>
+        	<managed-bean-name>eventSession</managed-bean-name>
+        	<managed-bean-class>
+        		events.web.EventSession
+        	</managed-bean-class>
+        	<managed-bean-scope>session</managed-bean-scope>
+        </managed-bean>
+
+        <navigation-rule>
+          <navigation-case>
+            <from-outcome>events-list</from-outcome>
+            <to-view-id>/jsp/eventsList.jspx</to-view-id>
+          </navigation-case>
+          <navigation-case>
+            <from-outcome>event-edit</from-outcome>
+            <to-view-id>/jsp/eventEdit.jspx</to-view-id>
+          </navigation-case>    
+        </navigation-rule>
+        
+
+</faces-config>

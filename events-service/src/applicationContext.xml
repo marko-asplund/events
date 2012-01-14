@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:jee="http://www.springframework.org/schema/jee"
+       xsi:schemaLocation="
+       http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+       http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd
+       http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd
+       http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-2.5.xsd
+       http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-2.5.xsd
+       ">
+
+  <!-- register Spring's standard annotation post-processors.
+   	   registers e.g. PersistenceAnnotationBeanPostProcessor that will inject PersistenceContext. -->
+  <context:annotation-config/>
+  
+  <!-- automatically choose the correct platform JTA transaction manager.
+  	   the transaction manager instance will have the name "transactionManager". -->
+  <tx:jta-transaction-manager/>
+  
+  <!-- exception translation bean post processor.
+  	   translates JPA exceptions thrown in beans annotated with @Repository to Spring's exception hierarchy. -->
+  <bean class="org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor"/>
+
+  <bean id="emFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+  </bean>
+
+  <tx:advice id="txAdvice" transaction-manager="transactionManager">
+    <tx:attributes>
+      <tx:method name="*" propagation="REQUIRED"/>
+    </tx:attributes>
+  </tx:advice>
+
+  <aop:config>
+    <aop:pointcut id="serviceMethods" expression="execution(* events.service.EventService.*(..))"/>
+    <aop:advisor advice-ref="txAdvice" pointcut-ref="serviceMethods"/>
+  </aop:config>
+
+  <bean id="eventDAO" class="events.service.EventDAOJPA">
+  </bean>
+
+  <bean id="eventService" class="events.service.EventServiceImpl">
+    <property name="eventDAO" ref="eventDAO"/>
+  </bean>
+
+</beans>

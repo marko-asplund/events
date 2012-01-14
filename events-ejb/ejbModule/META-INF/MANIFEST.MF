@@ -1,0 +1,5 @@
+Manifest-Version: 1.0
+Class-Path: events-service.jar 
+ spring.jar 
+ log4j-1.2.15.jar
+

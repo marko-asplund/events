@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--
+	Ant build file for events-service project.
+	Marko Asplund
+-->
+<project name="events-service" basedir="." default="dist">
+	<path id="buildpath">
+		<fileset dir="lib" includes="*.jar"/>
+	</path>
+	
+	<path id="testpath">
+		<path refid="buildpath"/>
+		<fileset dir="test/lib" includes="**/*.jar"/>
+	</path>
+
+	<target name="init">
+		<mkdir dir="build"/>
+		<mkdir dir="dist"/>
+	</target>
+	
+	<target name="compile" depends="init">
+		<javac srcdir="src" destdir="build" classpathref="buildpath" source="1.5" target="1.5" debug="true"/>
+	</target>
+
+	<target name="dist" depends="compile">
+		<taskdef name="openjpac" classname="org.apache.openjpa.ant.PCEnhancerTask" classpathref="testpath"/>
+		<openjpac>
+			<config propertiesFile="src/META-INF/persistence.xml"/>
+			<classpath refid="testpath"/>
+			<classpath path="build"/>
+			<classpath path="src"/>
+		</openjpac>
+
+		<jar basedir="build" destfile="dist/events-service.jar">
+			<metainf dir="src/META-INF"/>
+			<fileset dir="src" includes="**/*.properties,**/*.xml" excludes="META-INF/*"/>
+		</jar>
+
+		<copy todir="../build">
+			<fileset file="dist/events-service.jar"/>
+			<fileset file="lib/aspectjweaver.jar"/>
+			<fileset file="lib/commons-collections-3.2.jar"/>
+			<fileset file="lib/commons-lang-2.1.jar"/>
+			<fileset file="lib/geronimo-jpa_3.0_spec-1.0.jar"/>
+			<fileset file="lib/log4j-1.2.15.jar"/>
+			<fileset file="lib/openjpa-1.2.0.jar"/>
+			<fileset file="lib/serp-1.13.1.jar"/>
+			<fileset file="lib/spring.jar"/>
+		</copy>
+	</target>
+
+	<target name="clean">
+		<delete dir="build"/>
+	</target>
+	
+</project>

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--
+	Ant build file for events-ear project.
+	Marko Asplund
+-->
+<project name="events-ear" basedir=".">
+	
+	<macrodef name="iterate">
+		<attribute name="target"/>
+		<sequential>
+			<subant target="@{target}">
+				<fileset file="../events-service/build.xml"/>
+				<fileset file="../events-ejb/build.xml"/>
+				<fileset file="../events-war/build.xml"/>
+	        </subant>
+	    </sequential>
+	</macrodef>
+
+	<target name="init">
+		<mkdir dir="../build"/>
+		<mkdir dir="../dist"/>
+	</target>
+	
+	<target name="compile" depends="init">
+		<iterate target="compile"/>
+	</target>
+	
+	<target name="dist" depends="compile">
+		<iterate target="dist"/>
+		<ear destfile="../dist/events.ear" appxml="EarContent/META-INF/application.xml">
+			<metainf dir="EarContent/META-INF" excludes="**/application.xml"/>
+			<fileset dir="../build" includes="*.jar,*.war"/>
+			<fileset dir="lib" includes="*.jar"/>
+		</ear>
+	</target>
+	
+	<target name="clean">
+		<iterate target="clean"/>
+	</target>
+	
+	<target name="package">
+		<zip basedir=".." destfile="../events.zip"
+			excludes="**/*.?ar,**/build-eclipse/**,**/build/**,**/tmp/**,**/*.doc,
+			**/*.jpeg,**/*.jpg,**/*.emf,**/TODO.txt,**/*.mdzip"/>
+		<zip basedir=".." destfile="../events-ext-jars.zip"
+			includes="**/lib/*.jar,**/lib/dev/*.jar"/>
+	</target>
+	
+</project>

@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--
+	Ant build file for events-ejb project.
+	Marko Asplund
+-->
+<project name="events-ejb" basedir="." default="dist">
+	<property file="../events-ear/build.properties"/>
+	<property name="src.dir" value="ejbModule"/>
+
+	<property name="shared-lib.dir" value="../events-service/lib"/>
+	<property name="service-build.dir" value="../events-service/build"/>
+	<property name="service-lib.dir" value="../events-service/dist"/>
+
+	<path id="buildpath">
+		<fileset dir="${shared-lib.dir}" includes="*.jar"/>
+		<fileset dir="${was-profile.root}/lib" includes="*.jar"/>
+		<pathelement location="${service-build.dir}"/>
+	</path>
+	
+	<target name="init">
+		<mkdir dir="build"/>
+		<mkdir dir="dist"/>
+		<mkdir dir="tmp"/>
+		<condition property="isWindows" value="true">
+			<os family="windows"/>
+		</condition>
+		<condition property="isUnix" value="true">
+			<os family="unix"/>
+		</condition>
+		<fail message="unsupported operating system">
+		  <condition>
+		    <not>
+		      <or>
+		        <istrue value="${isWindows}"/>
+		        <istrue value="${isUnix}"/>
+	  	      </or>
+	  	    </not>
+	  	  </condition>
+		</fail>
+	</target>
+
+	<target name="compile" depends="init">
+		<javac srcdir="${src.dir}" destdir="build" classpathref="buildpath" source="1.5" target="1.5" debug="true">
+		</javac>
+	</target>
+	
+	<target name="dist" depends="compile">
+		<jar basedir="build" destfile="dist/events-ejb-tmp.jar" manifest="${src.dir}/META-INF/MANIFEST.MF">
+			<metainf dir="${src.dir}/META-INF"/>
+			<fileset dir="${src.dir}" includes="**/*.properties,**/*.xml" excludes="META-INF/*"/>
+		</jar>
+		<antcall target="ejbDeploy"/>
+		<copy file="dist/events-ejb.jar" todir="../build"/>
+	</target>
+
+	<target name="ejbDeploy" depends="ejbDeployWindows,ejbDeployUnix">
+	</target>
+
+	<target name="ejbDeployWindows" if="isWindows">
+		<exec executable="cmd" failonerror="true">
+			<arg value="/c"/>
+			<arg value="${was-profile.root}/bin/ejbDeploy.bat"/>
+			<arg value="dist/events-ejb-tmp.jar"/>
+			<arg value="tmp"/>
+			<arg value="dist/events-ejb.jar"/>
+			<arg value="-cp"/>
+			<arg value="${service-lib.dir}/events-service.jar;${shared-lib.dir}/openjpa-1.2.0.jar"/>
+			<arg value="-quiet"/>
+			<arg value="-nowarn"/>
+		</exec>
+	</target>
+
+	<target name="ejbDeployUnix" if="isUnix">
+		<!--
+		EJB stub generation fails during deployment to WAS with enhanced JPA classes because enhanced
+		entity classes reference OpenJPA interfaces (PersistenceCapable) that can't be found in the classpath
+		during deployment.
+		For this reason stubs are generated here. Another way to handle this would be to add OpenJPA
+		to the classpath so that it can be found by WAS EJBDeploy during deployment.
+		-->
+		<exec executable="${was-profile.root}/bin/ejbdeploy.sh" failonerror="true">
+			<arg value="dist/events-ejb-tmp.jar"/>
+			<arg value="tmp"/>
+			<arg value="dist/events-ejb.jar"/>
+			<arg value="-cp ${service-lib.dir}/events-service.jar:${shared-lib.dir}/openjpa-1.2.0.jar"/>
+			<arg value="-quiet -nowarn"/>
+		</exec>
+	</target>
+	
+	<target name="clean">
+		<delete dir="build"/>
+	</target>
+	
+</project>

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ejb-jar xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/ejb-jar_2_1.xsd" version="2.1">
+
+   <description><![CDATA[events-ejb deployment descriptor]]></description>
+   <display-name>events-ejb</display-name>
+
+   <enterprise-beans>
+
+      <session>
+         <display-name>EventServiceEjb</display-name>
+         <ejb-name>EventServiceEjb</ejb-name>
+         <home>events.ejb.EventServiceEjbHome</home>
+         <remote>events.ejb.EventServiceEjb</remote>
+         <ejb-class>events.ejb.EventServiceEjbBean</ejb-class>
+         <session-type>Stateless</session-type>
+         <transaction-type>Container</transaction-type>
+         <resource-ref>
+                <res-ref-name>jdbc/eventDS</res-ref-name>
+                <res-type>javax.sql.DataSource</res-type>
+                <res-auth>Container</res-auth>
+                <res-sharing-scope>Shareable</res-sharing-scope>
+         </resource-ref>
+      </session>
+ 
+   </enterprise-beans>
+
+   <assembly-descriptor>
+   	<container-transaction>
+    	<method>
+        	<ejb-name>EventServiceEjb</ejb-name>
+           	<method-name>*</method-name>
+        </method>
+        <trans-attribute>Required</trans-attribute>
+    </container-transaction>
+   </assembly-descriptor>
+
+</ejb-jar>

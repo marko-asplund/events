@@ -1,0 +1,49 @@
+
+Spring Framework 2.5.5
+- http://www.springframework.org/
+- required jar files
+  events-service/lib/aspectjweaver.jar
+  events-service/lib/spring.jar
+  events-service/test/lib/commons-logging.jar
+  events-service/test/lib/spring-test.jar
+  events-service/test/lib/junit-4.4.jar
+  events-war/WebContent/WEB-INF/lib/spring-web.jar
+  events-war/lib/dev/servlet-api.jar
+  events-war/lib/dev/jsp-api.jar
+  
+Apache OpenJPA v1.2.0
+- http://openjpa.apache.org/
+- required jar files
+  events-service/lib/commons-lang-2.1.jar
+  events-service/lib/openjpa-1.2.0.jar
+  events-service/lib/serp-1.13.1.jar
+  events-service/lib/geronimo-jpa_3.0_spec-1.0.jar
+  events-service/lib/commons-collections-3.2.jar
+  events-service/test/lib/geronimo-jta_1.1_spec-1.1.jar
+
+Apache MyFaces Core v1.1.5
+- http://myfaces.apache.org/
+- required jar files
+  events-war/WebContent/WEB-INF/lib/commons-digester-1.6.jar
+  events-war/WebContent/WEB-INF/lib/commons-codec-1.3.jar
+  events-war/WebContent/WEB-INF/lib/commons-beanutils-1.7.0.jar
+  events-war/WebContent/WEB-INF/lib/myfaces-impl-1.1.5.jar
+  events-war/WebContent/WEB-INF/lib/myfaces-api-1.1.5.jar
+
+Apache log4j v1.2.15
+- http://logging.apache.org/log4j/
+- required jar files
+  events-service/lib/log4j-1.2.15.jar
+
+SLF4J v1.5.0
+- http://www.slf4j.org/
+- required jar files
+  events-ear/lib/slf4j-api-1.5.0.jar
+  events-ear/lib/slf4j-log4j12-1.5.0.jar
+  events-ear/lib/jcl104-over-slf4j-1.5.0.jar
+
+Apache Derby v10.3.2.1
+- http://db.apache.org/derby/
+- required jar files
+  events-service/test/lib/derbyclient.jar
+

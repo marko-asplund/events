@@ -1,0 +1,11 @@
+CREATE TABLE event (
+  id BIGINT NOT NULL GENERATED ALWAYS AS IDENTITY (START WITH 1),
+  title VARCHAR(50) NOT NULL,
+  category VARCHAR(20) NOT NULL,
+  description VARCHAR(1024),
+  start TIMESTAMP NOT NULL,
+  duration INT NOT NULL,
+  version INT  NOT NULL,
+  PRIMARY KEY (id)
+);
+

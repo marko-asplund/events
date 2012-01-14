@@ -1,0 +1,67 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.0"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:h="http://java.sun.com/jsf/html">
+  <jsp:output omit-xml-declaration="true" doctype-root-element="HTML"
+              doctype-system="http://www.w3.org/TR/html4/loose.dtd"
+              doctype-public="-//W3C//DTD HTML 4.01 Transitional//EN"/>
+  <jsp:directive.page contentType="text/html;charset=ISO-8859-15"/>
+
+  <f:view>
+  
+  <html>
+  
+  <head>
+    <title><h:outputText value="Event #{eventSession.currentOperation}"/></title>
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/events.css"/>
+  </head>
+  
+	<h:form>
+	
+	<h1><h:outputText value="Event #{eventSession.currentOperation}"/></h1>
+
+	<h:messages/>
+	
+	<h:panelGrid rowClasses=",alignright">
+	
+	<h:panelGrid columns="2" styleClass="tablebg" columnClasses="labelcol,valuecol"
+	  border="0" cellpadding="5">
+	
+	  <h:outputLabel value="Id" for="id"/>
+	  <h:inputText id="id" value="#{eventSession.currentEvent.id}" disabled="true"/>
+	  
+	  <h:outputLabel value="Title *" for="title"/>
+	  <h:inputText id="title" value="#{eventSession.currentEvent.title}" required="true"/>
+
+	  <h:outputLabel value="Category *" for="category"/>
+	  <h:inputText id="category" value="#{eventSession.currentEvent.category}" required="true"/>
+
+	  <h:outputLabel value="Description" for="description"/>
+	  <h:inputText id="description" value="#{eventSession.currentEvent.description}"/>
+
+	  <h:outputLabel value="Start time *" for="startTime"/>
+	  <h:inputText id="startTime" value="#{eventSession.currentEvent.startTime}" required="true"
+	   title="yyyy-MM-dd HH:mm">
+	    <f:convertDateTime pattern="yyyy-MM-dd HH:mm"/>
+	  </h:inputText>
+
+	  <h:outputLabel value="Duration *" for="duration"/>
+	  <h:inputText id="duration" value="#{eventSession.currentEvent.duration}" required="true"
+	   converter="javax.faces.Integer"/>
+
+	</h:panelGrid>
+
+    <h:panelGroup>
+	  <h:commandButton value="Cancel" action="#{eventBacking.cancel}" immediate="true"/>
+	  <h:commandButton value="Save" action="#{eventBacking.save}"/>
+	</h:panelGroup>
+	
+	</h:panelGrid>
+	
+	</h:form>
+
+  </html>
+
+  </f:view>
+	
+</jsp:root>

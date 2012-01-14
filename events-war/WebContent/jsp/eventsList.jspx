@@ -1,0 +1,66 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.0"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:h="http://java.sun.com/jsf/html">
+  <jsp:output omit-xml-declaration="true" doctype-root-element="HTML"
+              doctype-system="http://www.w3.org/TR/html4/loose.dtd"
+              doctype-public="-//W3C//DTD HTML 4.01 Transitional//EN"/>
+  <jsp:directive.page contentType="text/html;charset=ISO-8859-15"/>
+
+  <f:view>
+  
+    <html>
+
+    <head>
+      <title>Event list</title>
+      <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/events.css"/>
+    </head>
+
+    <body>
+
+	<h:form>
+
+	<h1>Event list</h1>
+
+    <h:panelGrid rowClasses=",alignright">
+
+    <h:dataTable value="#{eventBacking.events}" var="event"
+     styleClass="tablebg" headerClass="tablehdr" columnClasses="number,text,text"
+     rowClasses="oddrow,evenrow" border="0" cellpadding="5">
+
+      <h:column>
+         <f:facet name="header">
+           <h:outputText value="Id"/>
+         </f:facet>
+         <h:outputText value="#{event.id}"/>
+      </h:column>
+
+      <h:column>
+         <f:facet name="header">
+           <h:outputText value="Title"/>
+         </f:facet>
+         <h:outputText value="#{event.title}"/>
+      </h:column>
+      
+      <h:column>
+      	<h:commandLink action="#{eventBacking.edit}">
+      	  <h:outputText value="Edit"/>
+      	  <f:param name="eventId" value="#{event.id}"/>
+      	</h:commandLink>
+      </h:column>
+      
+	</h:dataTable>
+
+	<h:commandButton value="Add" action="#{eventBacking.create}"/>
+
+    </h:panelGrid>
+
+    </h:form>
+
+    </body>
+
+    </html>
+
+  </f:view>
+
+</jsp:root>
