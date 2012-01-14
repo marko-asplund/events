@@ -1,49 +1,54 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project-modules id="moduleCoreId" project-version="1.5.0">
     <wb-module deploy-name="events-ear">
-        <wb-resource deploy-path="/" source-path="/EarContent"/>
-        <dependent-module deploy-path="/" handle="module:/resource/events-ejb/events-ejb">
-            <dependent-object>EjbModule_1206185684606</dependent-object>
+        <wb-resource deploy-path="/" source-path="/target/m2e-wtp/ear-resources"/>
+        <wb-resource deploy-path="/" source-path="/src/main/application" tag="defaultRootSource"/>
+        <dependent-module archiveName="events-ejb-0.0.1-SNAPSHOT.jar" deploy-path="/" handle="module:/resource/events-ejb/events-ejb">
             <dependency-type>uses</dependency-type>
         </dependent-module>
-        <dependent-module deploy-path="/" handle="module:/resource/events-war/events-war">
-            <dependent-object>WebModule_1206186023018</dependent-object>
+        <dependent-module archiveName="events-service-0.0.1-SNAPSHOT.jar" deploy-path="/" handle="module:/resource/events-service/events-service">
             <dependency-type>uses</dependency-type>
         </dependent-module>
-        <dependent-module archiveName="events-service.jar" deploy-path="/" handle="module:/resource/events-service/events-service">
+        <dependent-module archiveName="openjpa-1.2.0.jar" deploy-path="/" handle="module:/classpath/var/M2_REPO/org/apache/openjpa/openjpa/1.2.0/openjpa-1.2.0.jar">
             <dependency-type>uses</dependency-type>
         </dependent-module>
-        <dependent-module deploy-path="/" handle="module:/classpath/lib/events-service/lib/log4j-1.2.15.jar">
+        <dependent-module archiveName="serp-1.13.1.jar" deploy-path="/" handle="module:/classpath/var/M2_REPO/net/sourceforge/serp/serp/1.13.1/serp-1.13.1.jar">
             <dependency-type>uses</dependency-type>
         </dependent-module>
-        <dependent-module deploy-path="/" handle="module:/classpath/lib/events-service/lib/spring.jar">
+        <dependent-module archiveName="junit-3.8.1.jar" deploy-path="/" handle="module:/classpath/var/M2_REPO/junit/junit/3.8.1/junit-3.8.1.jar">
             <dependency-type>uses</dependency-type>
         </dependent-module>
-        <dependent-module deploy-path="/" handle="module:/classpath/lib/events-service/lib/aspectjweaver.jar">
+        <dependent-module archiveName="commons-lang-2.1.jar" deploy-path="/" handle="module:/classpath/var/M2_REPO/commons-lang/commons-lang/2.1/commons-lang-2.1.jar">
             <dependency-type>uses</dependency-type>
         </dependent-module>
-        <dependent-module deploy-path="/" handle="module:/classpath/lib/events-service/lib/serp-1.13.1.jar">
+        <dependent-module archiveName="commons-collections-3.2.jar" deploy-path="/" handle="module:/classpath/var/M2_REPO/commons-collections/commons-collections/3.2/commons-collections-3.2.jar">
             <dependency-type>uses</dependency-type>
         </dependent-module>
-        <dependent-module deploy-path="/" handle="module:/classpath/lib/events-service/lib/commons-lang-2.1.jar">
+        <dependent-module archiveName="commons-pool-1.3.jar" deploy-path="/" handle="module:/classpath/var/M2_REPO/commons-pool/commons-pool/1.3/commons-pool-1.3.jar">
             <dependency-type>uses</dependency-type>
         </dependent-module>
-        <dependent-module deploy-path="/" handle="module:/classpath/lib/events-service/lib/commons-collections-3.2.jar">
+        <dependent-module archiveName="geronimo-jms_1.1_spec-1.0.1.jar" deploy-path="/" handle="module:/classpath/var/M2_REPO/org/apache/geronimo/specs/geronimo-jms_1.1_spec/1.0.1/geronimo-jms_1.1_spec-1.0.1.jar">
             <dependency-type>uses</dependency-type>
         </dependent-module>
-        <dependent-module deploy-path="/" handle="module:/classpath/lib/events-service/lib/openjpa-1.0.2.jar">
+        <dependent-module archiveName="geronimo-jta_1.1_spec-1.1.jar" deploy-path="/" handle="module:/classpath/var/M2_REPO/org/apache/geronimo/specs/geronimo-jta_1.1_spec/1.1/geronimo-jta_1.1_spec-1.1.jar">
             <dependency-type>uses</dependency-type>
         </dependent-module>
-        <dependent-module deploy-path="/" handle="module:/classpath/lib/events-service/lib/geronimo-jpa_3.0_spec-1.0.jar">
+        <dependent-module archiveName="geronimo-jpa_3.0_spec-1.0.jar" deploy-path="/" handle="module:/classpath/var/M2_REPO/org/apache/geronimo/specs/geronimo-jpa_3.0_spec/1.0/geronimo-jpa_3.0_spec-1.0.jar">
             <dependency-type>uses</dependency-type>
         </dependent-module>
-        <dependent-module deploy-path="/" handle="module:/classpath/lib/events-ear/lib/jcl104-over-slf4j-1.5.0.jar">
+        <dependent-module archiveName="ejb-api-3.0.jar" deploy-path="/" handle="module:/classpath/var/M2_REPO/javax/ejb/ejb-api/3.0/ejb-api-3.0.jar">
             <dependency-type>uses</dependency-type>
         </dependent-module>
-        <dependent-module deploy-path="/" handle="module:/classpath/lib/events-ear/lib/slf4j-api-1.5.0.jar">
+        <dependent-module archiveName="events-war-0.0.1-SNAPSHOT.war" deploy-path="/" handle="module:/resource/events-war/events-war">
             <dependency-type>uses</dependency-type>
         </dependent-module>
-        <dependent-module deploy-path="/" handle="module:/classpath/lib/events-ear/lib/slf4j-log4j12-1.5.0.jar">
+        <dependent-module archiveName="log4j-1.2.16.jar" deploy-path="/" handle="module:/classpath/var/M2_REPO/log4j/log4j/1.2.16/log4j-1.2.16.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="spring-2.5.5.jar" deploy-path="/" handle="module:/classpath/var/M2_REPO/org/springframework/spring/2.5.5/spring-2.5.5.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="commons-logging-1.1.1.jar" deploy-path="/" handle="module:/classpath/var/M2_REPO/commons-logging/commons-logging/1.1.1/commons-logging-1.1.1.jar">
             <dependency-type>uses</dependency-type>
         </dependent-module>
     </wb-module>
