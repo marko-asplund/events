@@ -3,11 +3,11 @@
 	<display-name>
 	events-ear</display-name>
 	<module id="EjbModule_1206185684606">
-		<ejb>events-ejb.jar</ejb>
+		<ejb>events-ejb-0.0.1-SNAPSHOT.jar</ejb>
 	</module>
 	<module id="WebModule_1206186023018">
 		<web>
-			<web-uri>events-war.war</web-uri>
+			<web-uri>events-war-0.0.1-SNAPSHOT.war</web-uri>
 			<context-root>events-war</context-root>
 		</web>
 	</module>

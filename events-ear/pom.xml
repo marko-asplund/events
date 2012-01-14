@@ -18,7 +18,7 @@
         <version>2.6</version>
         <configuration>
           <version>1.4</version>
-          <defaultLibBundleDir>lib</defaultLibBundleDir>
+<!--      <defaultLibBundleDir>lib</defaultLibBundleDir> -->
           <generateApplicationXml>false</generateApplicationXml>
         </configuration>
       </plugin>
@@ -31,6 +31,12 @@
       <artifactId>events-ejb</artifactId>
       <version>0.0.1-SNAPSHOT</version>
       <type>ejb</type>
+      <exclusions>
+      	<exclusion>
+			<groupId>org.apache.geronimo.specs</groupId>
+			<artifactId>geronimo-ejb_2.1_spec</artifactId>
+      	</exclusion>
+      </exclusions>
     </dependency>
     <dependency>
       <groupId>com.github.sample</groupId>
@@ -38,5 +44,17 @@
       <version>0.0.1-SNAPSHOT</version>
       <type>war</type>
     </dependency>
+	<dependency>
+		<groupId>org.slf4j</groupId>
+		<artifactId>slf4j-api</artifactId>
+		<version>1.5.0</version>
+		<scope>runtime</scope>
+	</dependency>
+	<dependency>
+		<groupId>org.slf4j</groupId>
+		<artifactId>slf4j-log4j12</artifactId>
+		<version>1.5.0</version>
+		<scope>runtime</scope>
+	</dependency>	
   </dependencies>
 </project>
