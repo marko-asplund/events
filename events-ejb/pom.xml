@@ -18,6 +18,9 @@
         <version>2.3</version>
         <configuration>
           <ejbVersion>2.1</ejbVersion>
+          <archive>
+            <manifestFile>src/main/resources/META-INF/MANIFEST.MF</manifestFile>
+          </archive>
         </configuration>
       </plugin>
     </plugins>

@@ -5,7 +5,7 @@
   <version>0.0.1-SNAPSHOT</version>
   <packaging>pom</packaging>
   <name>events</name>
-  <description>j2ee sample app</description>
+  <description>j2ee and Spring sample app</description>
 
   <modules>
   	<module>events-ear</module>

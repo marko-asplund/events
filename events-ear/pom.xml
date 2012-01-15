@@ -19,7 +19,7 @@
         <configuration>
           <version>1.4</version>
 <!--      <defaultLibBundleDir>lib</defaultLibBundleDir> -->
-          <generateApplicationXml>false</generateApplicationXml>
+          <generateApplicationXml>true</generateApplicationXml>
         </configuration>
       </plugin>
   	</plugins>
