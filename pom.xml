@@ -7,6 +7,10 @@
   <name>events</name>
   <description>j2ee and Spring sample app</description>
 
+  <properties>
+    <spring.version>2.5.5</spring.version>
+  </properties>
+
   <modules>
   	<module>events-ear</module>
   	<module>events-ejb</module>
