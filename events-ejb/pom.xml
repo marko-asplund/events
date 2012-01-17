@@ -18,23 +18,32 @@
         <configuration>
           <ejbVersion>2.1</ejbVersion>
           <archive>
-            <manifestFile>src/main/resources/META-INF/MANIFEST.MF</manifestFile>
+            <index/>
+            <manifestFile>${project.build.outputDirectory}/META-INF/MANIFEST.MF</manifestFile>
           </archive>
         </configuration>
       </plugin>
     </plugins>
+
+	<resources>
+		<resource>
+			<directory>src/main/resources</directory>
+			<filtering>true</filtering>
+		</resource>
+	</resources>
+
   </build>
 
   <dependencies>
     <dependency>
     	<groupId>com.github.sample</groupId>
     	<artifactId>events-service</artifactId>
-    	<version>0.0.1-SNAPSHOT</version>
+    	<version>${events-service.version}</version>
     </dependency>
 	<dependency>
 		<groupId>org.apache.geronimo.specs</groupId>
 		<artifactId>geronimo-ejb_2.1_spec</artifactId>
-		<version>1.1</version>
+		<version>${ejb21.version}</version>
 		<scope>compile</scope>
 	</dependency>
   </dependencies>

@@ -1,0 +1,7 @@
+Manifest-Version: 1.2
+Class-Path: events-ejb-${events-ejb.version}.jar events-service-${events-service.version}.jar
+  log4j-${log4j.version}.jar spring-${spring.version}.jar aspectjweaver-${aspectj.version}.jar
+  commons-lang-${commons-lang.version}.jar serp-${serp.version}.jar
+  commons-collections-${commons-collections.version}.jar openjpa-${openjpa.version}.jar
+  geronimo-jpa_3.0_spec-${jpa.version}.jar
+  jcl104-over-slf4j-${slf4j.version}.jar slf4j-api-${slf4j.version}.jar slf4j-log4j12-${slf4j.version}.jar
