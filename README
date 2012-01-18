@@ -1,3 +1,6 @@
 
-j2ee 1.4 sample project for testing github
+j2ee 1.4 + Spring sample project.
 
+code originally written for the article "Using Spring and OpenJPA with WebSphere Application Server"
+published on IBM developerWorks. later migrated to use Maven and published on github. See
+http://www.ibm.com/developerworks/websphere/library/techarticles/0810_asplund/0810_asplund.html
