@@ -62,6 +62,15 @@
                 <requireMavenVersion>
                   <version>3.0</version>
                 </requireMavenVersion>
+				<requireProperty>
+				  <property>was61.home</property>
+				  <message>WebSphere directory must be specified</message>
+				</requireProperty>
+				<requireFilesExist>
+				  <files>
+				    <file>${was61.home}</file>
+				  </files>
+				</requireFilesExist>
               </rules>
             </configuration>
           </execution>
