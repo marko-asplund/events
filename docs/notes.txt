@@ -1,0 +1,60 @@
+﻿
+Build
+=====
+
+Prerequisites
+- Java JDK v1.6.0 (tested with v1.6.0_25)
+- Maven v3.0
+- IBM WebSphere Application Server 6.1 (tested with v6.1.0.17, Windows XP Professional SP3)
+
+mvn -Dwas61.home="c:\program files\ibm\websphere\appserver" clean install
+
+
+Deploy
+======
+- Install + configure WAS 6.1
+- Apache Derby DB v10.8 (tested with 10.8.2.2 in server mode)
+  + install Derby server (see below)
+  + configure Derby datasource in WAS (see below)
+- deploy events EAR
+  see http://www.ibm.com/developerworks/websphere/library/techarticles/0810_asplund/0810_asplund.html
+  remember to set web module classloader policy: Classes loaded with application class loader first (PARENT_LAST)
+- start the application
+- access the app: http://localhost:9080/events-war/faces/jsp/eventEdit.jspx
+
+================================================================
+
+Derby installation
+==================
+- download and extract Derby
+- configure database authentication in derby.properties
+  derby.connection.requireAuthentication=true
+  derby.authentication.provider=BUILTIN
+  derby.user.root=root
+- start Derby network server
+  sh bin/startNetworkServer
+- create database
+  ij
+  connect 'jdbc:derby://localhost:1527/events1db;create=true;user=root;password=root';
+- create db user
+  CALL SYSCS_UTIL.SYSCS_SET_DATABASE_PROPERTY('derby.user.ma1', 'ma1');
+  disconnect;
+- create db schema
+  connect 'jdbc:derby://localhost:1527/events1db;user=ma1;password=ma1';
+  create schema ma1;
+- initialize schema for events app
+  run event.ddl
+
+Configure Derby datasource in WAS
+=================================
+- Create JDBC provider (WAS console: Resources / JDBC / JDBC Providers)
+  Database type: Derby
+  Provider type: Derby network server using Derby client
+  Implementation type: XA data source
+- Create datasource
+  Data source name: eventDS
+  JNDI name: jdbc/eventDS
+  JDBC Provider: select the previously created Derby JDBC provider
+  Database name: events1db
+  set DS custom properties (user, password)
+  test connection
