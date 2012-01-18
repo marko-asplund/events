@@ -34,6 +34,7 @@
         <configuration>
           <ejbVersion>2.1</ejbVersion>
           <archive>
+			<addMavenDescriptor>false</addMavenDescriptor>
             <index/>
             <manifestFile>${project.build.outputDirectory}/META-INF/MANIFEST.MF</manifestFile>
           </archive>
